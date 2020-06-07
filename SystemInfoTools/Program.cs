@@ -35,7 +35,7 @@ namespace SystemInfoTools
             cpuUpdaterThread.Start();
             ramUpdaterThread.Start();
             
-            //Console.ReadKey();
+            Console.ReadKey();
 
 
 
