@@ -52,6 +52,7 @@ namespace SystemInfoTools
             
                 try
                 {
+                Thread.Sleep(500);
                 _ = form1.groupBox1.Invoke(new cpuDetails(updateCpuDetails));
                 while (Program.uiThread.IsAlive)
                          {
