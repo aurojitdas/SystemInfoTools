@@ -30,12 +30,15 @@ namespace SystemInfoTools
             uiThread = new Thread(initializeUI);
             cpuUpdaterThread = new Thread(deleg.cpuUpdateRoutine);
             ramUpdaterThread = new Thread(deleg.ramUpdateRoutine);
-           
+
             uiThread.Start();
             cpuUpdaterThread.Start();
             ramUpdaterThread.Start();
-            
+            deleg.systemInfoUpdate();
+
             //Console.ReadKey();
+
+
 
 
 

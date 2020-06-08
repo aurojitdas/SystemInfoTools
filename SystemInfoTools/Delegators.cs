@@ -19,77 +19,92 @@ namespace SystemInfoTools
             this.counter = counter;
         }
 
-        private delegate void cpuCountDelegate(int value);
-        private delegate void ramCountDelegate(int value);
-        private delegate void cpuDetails();
-
+        private delegate void cpuUpdateDelegate(int value);
+        private delegate void ramUpdateDelegate(int value);
+        private delegate void systemDetails();
+        
 
         private  void updateCpuUtilizatoin(int value)
         {
             form1.progressBar1.Value = value;
             form1.label2.Text = value.ToString()+"%";
             form1.label12.Text = value.ToString() + "%";
-            form1.label10.Text = counter.getCpuFrequency()+" Mhz";
+            form1.label10.Text = counter.getMaxCpuFrequency()+" Mhz";
             
 
 
         }
-        private void updateCpuDetails()
+        private void updateSystemDetails()
         {
             
             form1.label9.Text = counter.getCpuName();
             form1.label11.Text = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+            form1.label16.Text = counter.getTotalRAM()+" MB";
+            form1.label20.Text = counter.getRamType();
         }
+              
 
         private void updateRamUtilization(int value)
         {
             form1.progressBar2.Value = value;
             form1.label4.Text = value.ToString()+"%";
+            form1.label18.Text = value.ToString() + "%";
+            form1.label17.Text = counter.getAvailableRAM() + " MB";
         }
 
         public  void cpuUpdateRoutine()
-        {
-            
+        {          
                 try
                 {
-                Thread.Sleep(500);
-                _ = form1.groupBox1.Invoke(new cpuDetails(updateCpuDetails));
+               
                 while (Program.uiThread.IsAlive)
                          {
 
-                            _ = form1.Invoke(new cpuCountDelegate(updateCpuUtilizatoin), (int)counter.getCpuUtilizatoin());
+                            _ = form1.Invoke(new cpuUpdateDelegate(updateCpuUtilizatoin), (int)counter.getCpuUtilizatoin());
                             Thread.Sleep(500);
                       }
-
             }
-                catch (Exception)
+                catch (Exception e)
                 {
                     Console.WriteLine("Error in cpuUpdateRoutine");
-                }
-                
-           
+                    Console.WriteLine(e);
+                }                           
         }
 
+        public void systemInfoUpdate()
+        {
+            try
+            {
+                
+                _ = form1.groupBox1.Invoke(new systemDetails(updateSystemDetails));
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
         
-
-
-
         public void ramUpdateRoutine()
         {
 
-            while (Program.uiThread.IsAlive)
-            {
-                try
-                {
-                    _ = form1.Invoke(new cpuCountDelegate(updateRamUtilization), (int)counter.getRamUtilizaton());
-                    Thread.Sleep(500);
+            Thread.Sleep(500);
+            
+            try
+                {                      
+                  while (Program.uiThread.IsAlive)
+                        {
+                        _ = form1.Invoke(new ramUpdateDelegate(updateRamUtilization), (int)counter.getRamUtilizaton());
+                          Thread.Sleep(500);
+                     }
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Error in ramUpdateRoutine");
+                    Console.WriteLine("Error in ramUpdateRoutine");              
+                
                 }
 
-            }
+           
 
         }
 
