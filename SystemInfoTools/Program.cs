@@ -17,7 +17,8 @@ namespace SystemInfoTools
         public static Thread uiThread;
         static Thread cpuUpdaterThread;
         static Thread ramUpdaterThread;
-        
+        static Thread updateSystemInfo;
+
 
         static void Main(string[] args)
         {
@@ -30,11 +31,12 @@ namespace SystemInfoTools
             uiThread = new Thread(initializeUI);
             cpuUpdaterThread = new Thread(deleg.cpuUpdateRoutine);
             ramUpdaterThread = new Thread(deleg.ramUpdateRoutine);
-
+            updateSystemInfo = new Thread(deleg.systemInfoUpdate);
             uiThread.Start();
+            updateSystemInfo.Start();            
             cpuUpdaterThread.Start();
             ramUpdaterThread.Start();
-            deleg.systemInfoUpdate();
+           
 
             //Console.ReadKey();
 
