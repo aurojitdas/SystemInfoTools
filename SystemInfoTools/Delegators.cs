@@ -36,7 +36,7 @@ namespace SystemInfoTools
         }
         private void updateSystemDetails()
         {
-            
+            Thread.Sleep(1000);
             form1.label9.Text = counter.getCpuName();
             form1.label11.Text = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
             form1.label16.Text = counter.getTotalRAM()+" MB";

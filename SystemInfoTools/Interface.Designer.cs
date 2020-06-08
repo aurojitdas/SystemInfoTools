@@ -53,6 +53,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.RamInfo.SuspendLayout();
             this.SuspendLayout();
@@ -288,11 +289,22 @@
             this.label13.TabIndex = 10;
             this.label13.Text = "Total Memory:";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.Blue;
+            this.label21.Location = new System.Drawing.Point(694, 428);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(50, 13);
+            this.label21.TabIndex = 18;
+            this.label21.Text = "Ver 0.2.1";
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 450);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.RamInfo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
@@ -301,7 +313,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "UserInterface";
             this.Text = "System Information";
             this.groupBox1.ResumeLayout(false);
@@ -339,5 +353,6 @@
         public System.Windows.Forms.Label label16;
         public System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
+        public System.Windows.Forms.Label label21;
     }
 }
