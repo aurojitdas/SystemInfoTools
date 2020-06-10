@@ -40,6 +40,10 @@ namespace SystemInfoTools
             form1.label11.Text = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
             form1.label16.Text = counter.getTotalRAM()+" MB";
             form1.label20.Text = counter.getRamType();
+            form1.label26.Text = counter.getOsName();
+            form1.label25.Text = counter.getWindowsType();
+            form1.label22.Text = counter.getUpTime();
+
         }
               
 

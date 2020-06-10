@@ -64,7 +64,7 @@ namespace SystemInfoTools
             return totalRAMUtil.NextValue();
         }
 
-        public String getMaxCpuFrequency()
+        public String getMaxCpuFrequency()           
         {
             String freq = null;
             Searcher = new ManagementObjectSearcher("select MaxClockSpeed from Win32_Processor");
@@ -89,11 +89,7 @@ namespace SystemInfoTools
         public string getRamType(){
            
                 int type = 0;
-
-                //ConnectionOptions connection = new ConnectionOptions();
-                //connection.Impersonation = ImpersonationLevel.Impersonate;
-                //ManagementScope scope = new ManagementScope("\\\\.\\root\\CIMV2", connection);
-                //scope.Connect();
+               
                 ObjectQuery query = new ObjectQuery("SELECT * FROM Win32_PhysicalMemory");
                 ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
                 foreach (ManagementObject queryObj in searcher.Get())
@@ -103,6 +99,43 @@ namespace SystemInfoTools
 
                 return getRAMTypeString(type);
             
+        }
+
+
+        public String getOsName()
+        {
+            OperatingSystem os_info = System.Environment.OSVersion;
+            //This code will only return correct win 10 info if app.manifest is present with win10 comp.
+            return "Windows " + GetOsName(os_info); 
+        }
+
+
+        public String getWindowsType()
+        {
+            String type = null;
+
+            if (Environment.Is64BitOperatingSystem)
+            {
+                type = "64-bit ";
+
+            }
+            else
+            {
+                type = "32-bit";
+            }
+
+
+
+            return type;
+        }
+
+        public String getUpTime()
+        {
+            var ticks = Stopwatch.GetTimestamp();
+            var uptime = ((double)ticks) / Stopwatch.Frequency;
+            var uptimeSpan = TimeSpan.FromSeconds(uptime);
+
+            return uptimeSpan.ToString().Remove(10);
         }
 
 
@@ -147,6 +180,25 @@ namespace SystemInfoTools
             }
 
             return outValue;
+        }
+
+        private string GetOsName(OperatingSystem os_info)
+        {
+            string version =
+                os_info.Version.Major.ToString() + "." +
+                os_info.Version.Minor.ToString();
+            switch (version)
+            {
+                case "10.0": return "10/Server 2016";
+                case "6.3": return "8.1/Server 2012 R2";
+                case "6.2": return "8/Server 2012";
+                case "6.1": return "7/Server 2008 R2";
+                case "6.0": return "Server 2008/Vista";
+                case "5.2": return "Server 2003 R2/Server 2003/XP 64-Bit Edition";
+                case "5.1": return "XP";
+                case "5.0": return "2000";
+            }
+            return "Unknown";
         }
 
 
