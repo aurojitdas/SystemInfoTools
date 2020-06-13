@@ -95,11 +95,24 @@ namespace SystemInfoTools
                 foreach (ManagementObject queryObj in searcher.Get())
                 {
                     type = Convert.ToInt32(queryObj["MemoryType"]);
-                }
-
-                return getRAMTypeString(type);
+                }          
+                    return getRAMTypeString(type);
             
         }
+
+        public String getSystemInstallDate()
+        {
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2",
+                                                  "SELECT * FROM Win32_OperatingSystem");
+            String date = null;
+            foreach (ManagementObject queryObj in searcher.Get())
+            {
+                DateTime dt = ManagementDateTimeConverter.ToDateTime(queryObj["InstallDate"].ToString());
+                date = dt.ToString();
+            }
+
+            return date ;
+        }      
 
 
         public String getOsName()
@@ -189,11 +202,11 @@ namespace SystemInfoTools
                 os_info.Version.Minor.ToString();
             switch (version)
             {
-                case "10.0": return "10/Server 2016";
-                case "6.3": return "8.1/Server 2012 R2";
-                case "6.2": return "8/Server 2012";
-                case "6.1": return "7/Server 2008 R2";
-                case "6.0": return "Server 2008/Vista";
+                case "10.0": return "10";
+                case "6.3": return "8.1";
+                case "6.2": return "8";
+                case "6.1": return "7";
+                case "6.0": return "Vista";
                 case "5.2": return "Server 2003 R2/Server 2003/XP 64-Bit Edition";
                 case "5.1": return "XP";
                 case "5.0": return "2000";

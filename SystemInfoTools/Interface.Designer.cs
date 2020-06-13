@@ -307,7 +307,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(50, 13);
             this.label21.TabIndex = 18;
-            this.label21.Text = "Ver 0.3.1";
+            this.label21.Text = "Ver 0.3.2";
             // 
             // groupBox2
             // 

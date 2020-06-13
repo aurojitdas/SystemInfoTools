@@ -43,6 +43,7 @@ namespace SystemInfoTools
             form1.label26.Text = counter.getOsName();
             form1.label25.Text = counter.getWindowsType();
             form1.label22.Text = counter.getUpTime();
+            form1.label24.Text = counter.getSystemInstallDate();
 
         }
               
@@ -53,6 +54,7 @@ namespace SystemInfoTools
             form1.label4.Text = value.ToString()+"%";
             form1.label18.Text = value.ToString() + "%";
             form1.label17.Text = counter.getAvailableRAM() + " MB";
+            
         }
 
         public  void cpuUpdateRoutine()
