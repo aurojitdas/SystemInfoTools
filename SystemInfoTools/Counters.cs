@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -113,6 +114,79 @@ namespace SystemInfoTools
 
             return date ;
         }      
+
+       
+
+
+        public Dictionary<String,String> getNeworkAdapterDetails()
+        {
+            Dictionary<String, String> network = new Dictionary<String, String>();
+            try
+            {
+                Process p = new System.Diagnostics.Process();
+                p.StartInfo.FileName = "netsh.exe";
+                p.StartInfo.Arguments = "wlan show interfaces";
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardOutput = true;
+                p.StartInfo.CreateNoWindow = true;
+                p.Start();
+
+                string output = p.StandardOutput.ReadToEnd();
+                string ssid = output.Substring(output.IndexOf("SSID"));
+                ssid = ssid.Substring(ssid.IndexOf(":"));
+                ssid = ssid.Substring(2, ssid.IndexOf("\n")).Trim();
+                network.Add("SSID",ssid);
+
+                String signalStrength = output.Substring(output.IndexOf("Signal"));
+                signalStrength = signalStrength.Substring(signalStrength.IndexOf(":"));
+                signalStrength = signalStrength.Substring(2, signalStrength.IndexOf("\n")).Trim();
+                network.Add("SignalStrength", signalStrength);
+
+                String status = output.Substring(output.IndexOf("State"));
+                status = status.Substring(status.IndexOf(":"));
+                status = status.Substring(2, status.IndexOf("\n")).Trim();
+                network.Add("Status", status);
+
+                String name = output.Substring(output.IndexOf("Name"));
+                name = name.Substring(name.IndexOf(":"));
+                name = name.Substring(2, name.IndexOf("\n")).Trim();
+                network.Add("Name", name);
+
+                String desc = output.Substring(output.IndexOf("Description"));
+                desc = desc.Substring(desc.IndexOf(":"));
+                desc = desc.Substring(2, desc.IndexOf("\n")).Trim();
+                network.Add("Description", desc);
+
+                String Speed = output.Substring(output.IndexOf("Receive rate (Mbps)"));
+                Speed = Speed.Substring(Speed.IndexOf(":"));
+                Speed = Speed.Substring(2, Speed.IndexOf("\n")).Trim();
+                network.Add("Speed", Speed);
+
+
+
+
+
+
+                return network;
+            }
+            catch (Exception e)
+            {
+
+               // Dictionary<String, String> network = new Dictionary<String, String>();
+                network.Add("SSID", "Not Connected");
+                network.Add("SignalStrength", "Not Connected");
+                network.Add("Status", "Not Connected");
+                network.Add("Name", "Not Connected");
+                return network ;
+                
+            }
+            finally
+            {
+                
+            }
+
+           
+        }
 
 
         public String getOsName()

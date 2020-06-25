@@ -35,7 +35,8 @@ namespace SystemInfoTools
 
         }
         private void updateSystemDetails()
-        {           
+        {
+            Dictionary<String, String> networkInfo = counter.getNeworkAdapterDetails();
             form1.label9.Text = counter.getCpuName();
             form1.label11.Text = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
             form1.label16.Text = counter.getTotalRAM()+" MB";
@@ -43,7 +44,17 @@ namespace SystemInfoTools
             form1.label26.Text = counter.getOsName();
             form1.label25.Text = counter.getWindowsType();
             form1.label22.Text = counter.getUpTime();
-            form1.label24.Text = counter.getSystemInstallDate();
+            form1.label24.Text = counter.getSystemInstallDate();           
+            form1.label34.Text = networkInfo["Name"];
+            form1.label33.Text = networkInfo["Status"];
+            form1.label32.Text = networkInfo["SSID"];
+            form1.label30.Text = networkInfo["SignalStrength"];
+            form1.label39.Text = networkInfo["Description"];
+            form1.label40.Text = networkInfo["Speed"]+ " Mbps";
+
+            
+
+
 
         }
               
