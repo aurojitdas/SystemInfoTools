@@ -46,6 +46,11 @@ namespace SystemInfoTools
         {
 
         }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

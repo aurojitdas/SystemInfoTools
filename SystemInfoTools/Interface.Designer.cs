@@ -64,6 +64,10 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -72,10 +76,6 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.RamInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -357,6 +357,7 @@
             this.label23.Size = new System.Drawing.Size(43, 13);
             this.label23.TabIndex = 16;
             this.label23.Text = "Uptime:";
+            this.label23.Click += new System.EventHandler(this.label23_Click);
             // 
             // label24
             // 
@@ -434,6 +435,42 @@
             this.groupBox3.Text = "Wifi Info";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(86, 140);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(53, 13);
+            this.label40.TabIndex = 29;
+            this.label40.Text = "Unknown";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(6, 140);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(41, 13);
+            this.label41.TabIndex = 28;
+            this.label41.Text = "Speed:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(86, 48);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(53, 13);
+            this.label39.TabIndex = 27;
+            this.label39.Text = "Unknown";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(6, 48);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(63, 13);
+            this.label38.TabIndex = 26;
+            this.label38.Text = "Description:";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -505,42 +542,6 @@
             this.label37.Size = new System.Drawing.Size(76, 13);
             this.label37.TabIndex = 18;
             this.label37.Text = "Adapter name:";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(6, 48);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(63, 13);
-            this.label38.TabIndex = 26;
-            this.label38.Text = "Description:";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(86, 48);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(53, 13);
-            this.label39.TabIndex = 27;
-            this.label39.Text = "Unknown";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(86, 140);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(53, 13);
-            this.label40.TabIndex = 29;
-            this.label40.Text = "Unknown";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(6, 140);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(41, 13);
-            this.label41.TabIndex = 28;
-            this.label41.Text = "Speed:";
             // 
             // UserInterface
             // 
