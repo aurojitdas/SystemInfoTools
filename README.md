@@ -114,4 +114,4 @@ This project was created to demonstrate proficiency in:
 
 ---
 
-*Made with ❤️ by [Your Name]*
+*Made with ❤️ by Aurojit Das
